@@ -1,3 +1,5 @@
+# from stack overflow, works but does nothing.....
+
 import pandas as pd
 import matplotlib
 matplotlib.use('TkAgg')
@@ -20,7 +22,7 @@ while True:
     dframe['timestamp'] = pd.to_datetime(dframe['timestamp']) + pd.DateOffset(hours=2)
     dframe = dframe.set_index('timestamp')
     end = dframe.index.max()
-    start= dt.timedelta(hours=1)
+    start= pd.to_datetime(end) - dt.timedelta(hours=1)
     dframe = dframe.loc[start:end]
     plt.pause(0.0001)
     ax.plot_date(dframe.index.to_pydatetime(), dframe, marker='', linestyle='solid')
